@@ -9,7 +9,7 @@ set linebreak
 set nowrap  " No word wrap
 
 au BufRead, BufNewFile *.py set expandtab
-au BufRead, BufNewFile Makefile* set noexpandtab   
+au BufRead, BufNewFile Makefile* set noexpandtab
 
 set noanti          " Turn off anti-aliasing
 set gfn=Monaco:h16  " Set the font family and the font size
@@ -26,12 +26,14 @@ syntax on
 
 set showcmd
 
+set gdefault
+
 "--- Nerdtree options ---
 " Open automatically on startup
 "autocmd vimenter * NERDTree
 " Open if no files specified
 autocmd vimenter * if !argc() | NERDTree | endif
-" Remape Ctrl + n to open 
+" Remape Ctrl + n to open
 map <C-n> :NERDTreeToggle<CR>
 " Close if Nerdtree is last window
 autocmd vimenter * if !argc() | NERDTree | endif
