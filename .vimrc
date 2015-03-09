@@ -43,6 +43,7 @@ syntax enable
 set background=dark
 if has("gui_running")
     colorscheme macvim
+    " TODO: install others
 else
     colorscheme inkpot
 endif
