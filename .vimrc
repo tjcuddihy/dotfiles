@@ -1,4 +1,4 @@
-execute pathogen#infect()
+"execute pathogen#infect()
 
 if has("gui_running")
     set guioptions-=T
@@ -42,7 +42,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 syntax enable
 set background=dark
 if has("gui_running")
-    colorscheme solarized
+    colorscheme macvim
 else
     colorscheme inkpot
 endif
@@ -90,3 +90,4 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+

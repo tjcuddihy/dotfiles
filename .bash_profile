@@ -21,3 +21,8 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
+# Enable git autocomplete
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
