@@ -5,12 +5,16 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'  " Vundle itself
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'raichoo/haskell-vim'
-Plugin 'editorconfig/editorconfig-vim'
+Plugin 'raichoo/haskell-vim'  " Haskell syntax
+Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
+Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
+Plugin 'tomasr/molokai'  " Molokai colorscheme
+Plugin 'scrooloose/syntastic'  " Linter
+Plugin 'shutnik/jshint2.vim'  " JShint integration
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -35,7 +39,7 @@ set nowrap  " No word wrap
 au BufRead, BufNewFile *.py set expandtab
 au BufRead, BufNewFile Makefile* set noexpandtab
 
-set noanti          " Turn off anti-aliasing
+set anti            " Turn on anti-aliasing
 set gfn=Monaco:h16  " Set the font family and the font size
 
 set expandtab
@@ -66,7 +70,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 syntax enable
 set background=dark
 if has("gui_running")
-    colorscheme macvim
+    colorscheme molokai
     " TODO: install others
 else
     colorscheme inkpot
@@ -92,9 +96,6 @@ nnoremap <space> <nop>
 " Spacebar for President
 let mapleader = "\<space>"
 
-" Never press shift again
-nnoremap ; :
-
 " Buffer navigation
 map <leader>b :buffers<CR>
 map <leader>l :bnext<CR>
@@ -117,4 +118,18 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+
+" JShint
+let g:syntastic_javascript_checkers = ['jshint']
 
