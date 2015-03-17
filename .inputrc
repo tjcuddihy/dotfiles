@@ -1,0 +1,4 @@
+# Control + arrow to move back and forward one word, in terminal
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+
