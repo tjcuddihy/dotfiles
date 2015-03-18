@@ -15,6 +15,7 @@ alias gd="git diff "
 alias gc="git commit -m "
 alias gaa="git add -A; git status"
 alias gpom="git push origin master"
+alias glog="git log --graph --decorate --all"
 
 # Vim aliases
 alias v="mvim "
