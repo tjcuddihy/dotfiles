@@ -75,9 +75,12 @@ syntax enable
 set background=dark
 if has("gui_running")
     colorscheme molokai
-    " TODO: install others
 else
-    colorscheme inkpot
+    try
+        colorscheme molokai
+    catch
+        colorscheme torte
+    endtry
 endif
 
 " Autoreload .vimrc if it changes:
@@ -101,7 +104,7 @@ nnoremap <space> <nop>
 let mapleader = "\<space>"
 
 " Buffer navigation
-map <leader>b :buffers<CR>
+map <leader>b :buffers<CR>:buffer<space>
 map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
 
