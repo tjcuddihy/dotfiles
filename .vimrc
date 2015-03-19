@@ -32,6 +32,10 @@ if has("gui_running")
     set guioptions-=T
 endif
 
+"Show nice tabs
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+set list
+
 set number
 set linebreak
 set nowrap  " No word wrap
