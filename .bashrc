@@ -24,3 +24,12 @@ alias gs="git status -b"  # Add -s for short form
 # Vim aliases
 alias v="mvim "
 
+# Silver Searcher aliases
+agl () { ag --color --after=4 "$@" | less -SRi; }
+ags () { ag --color --after=4 --smart-case "$@" | less -SRi; }
+agq () { ag --color --before=2 --after=4 --literal "$@" | less -SRi; }
+agm () { ag --color --after=20 --literal "<<<<<<<" | less -SRi; } #Forgotten merge conflicts
+
+# Create a folder and then move into it
+mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
