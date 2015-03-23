@@ -15,6 +15,7 @@ Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
 Plugin 'tomasr/molokai'  " Molokai colorscheme
 Plugin 'scrooloose/syntastic'  " Linter
 Plugin 'shutnik/jshint2.vim'  " JShint integration
+Plugin 'rizzatti/dash.vim'  " Dash integration
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -65,8 +66,6 @@ set gdefault
 "autocmd vimenter * NERDTree
 " Open if no files specified
 autocmd vimenter * if !argc() | NERDTree | endif
-" Remape Ctrl + n to open
-map <C-n> :NERDTreeToggle<CR>
 " Close if Nerdtree is last window
 autocmd vimenter * if !argc() | NERDTree | endif
 
@@ -107,6 +106,12 @@ let mapleader = "\<space>"
 map <leader>b :buffers<CR>:buffer<space>
 map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
+
+" Simplify Dash search
+map <leader>d <Plug>DashSearch
+
+" Remape Ctrl + n to open
+map <C-n> :NERDTreeToggle<CR>
 
 " Resize window to 80 cols
 map <F8> :vertical resize 83<CR>
