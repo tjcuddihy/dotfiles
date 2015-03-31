@@ -9,7 +9,6 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # Git aliases
-
 alias gaa="git add -A; git status"
 alias gb="git branch -v --color"
 alias gba="git branch -va --color"  # All
@@ -23,6 +22,9 @@ alias gs="git status -b"  # Add -s for short form
 
 # Vim aliases
 alias v="mvim "
+
+# Simplified virtual env activator
+activenv () { source "$HOME/virtualenvs/$@/bin/activate"; }
 
 # Silver Searcher aliases
 agl () { ag --color --after=4 "$@" | less -SRi; }

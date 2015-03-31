@@ -9,6 +9,10 @@ fi
 
 # Add NPM
 export PATH="$HOME/.npm/bin:$PATH"
+
+# Add my bins
+export PATH="$HOME/code/bin:$PATH"
+
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
 export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
