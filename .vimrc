@@ -62,8 +62,6 @@ set showcmd
 set gdefault
 
 "--- Nerdtree options ---
-" Open automatically on startup
-"autocmd vimenter * NERDTree
 " Open if no files specified
 autocmd vimenter * if !argc() | NERDTree | endif
 " Close if Nerdtree is last window
@@ -95,7 +93,12 @@ augroup END
 " Highlight 80th col
 :set colorcolumn=79
 
+" Allow long lines in JS
 autocmd FileType javascript setl colorcolumn=0
+
+" Explore options
+let g:netrw_liststyle=3
+let g:netrw_winsize=15
 
 " --- Key bindings --- "
 nnoremap <space> <nop>
@@ -110,8 +113,9 @@ map <leader>h :bprev<CR>
 " Simplify Dash search
 map <leader>d <Plug>DashSearch
 
-" Remape Ctrl + n to open
-map <C-n> :NERDTreeToggle<CR>
+" Site maps
+map <leader>e :Lexplore<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 " Resize window to 80 cols
 map <F8> :vertical resize 83<CR>
