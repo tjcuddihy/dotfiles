@@ -9,13 +9,13 @@ Plugin 'gmarik/Vundle.vim'  " Vundle itself
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'raichoo/haskell-vim'  " Haskell syntax
-Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
 Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
 Plugin 'tomasr/molokai'  " Molokai colorscheme
 Plugin 'scrooloose/syntastic'  " Linter
+Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
 Plugin 'shutnik/jshint2.vim'  " JShint integration
 Plugin 'rizzatti/dash.vim'  " Dash integration
+Plugin 'raichoo/haskell-vim'  " Haskell syntax
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -45,7 +45,7 @@ au BufRead, BufNewFile *.py set expandtab
 au BufRead, BufNewFile Makefile* set noexpandtab
 
 set anti            " Turn on anti-aliasing
-set gfn=Monaco:h16  " Set the font family and the font size
+set gfn=Source\ Code\ Pro\ Light:h16 " Set the font family and the font size
 
 set expandtab
 set tabstop=4
