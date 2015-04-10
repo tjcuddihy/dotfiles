@@ -1,5 +1,4 @@
 # Bash aliases
-alias ls="ls -a"
 alias ll="ls -al"
 
 # Nav aliases
