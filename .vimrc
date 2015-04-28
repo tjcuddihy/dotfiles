@@ -149,4 +149,5 @@ let g:syntastic_enable_signs = 1
 
 " JShint
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_python_checkers = ['python', 'flake8']
 
