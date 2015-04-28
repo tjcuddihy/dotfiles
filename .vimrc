@@ -60,6 +60,7 @@ syntax on
 set showcmd
 
 set gdefault
+set nostartofline
 
 "--- Nerdtree options ---
 " Open if no files specified
