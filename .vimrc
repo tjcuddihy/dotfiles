@@ -88,11 +88,11 @@ augroup myvimrchooks
 augroup END
 
 " Turn off auto line break
-:set textwidth=0
-:set wrapmargin=0
+set textwidth=0
+set wrapmargin=0
 
 " Highlight 80th col
-:set colorcolumn=79
+set colorcolumn=79
 
 " Allow long lines in JS
 autocmd FileType javascript setl colorcolumn=0
