@@ -78,6 +78,10 @@ map <leader>b :buffers<CR>:buffer<space>
 map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
 
+" Simplify window resizing
+nnoremap <silent> > :exe "vertical resize " . (winwidth(0) * 5/6)<CR>
+nnoremap <silent> < :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
+
 " Simplify Dash search
 map <leader>d <Plug>DashSearch
 
