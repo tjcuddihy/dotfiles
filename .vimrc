@@ -29,49 +29,34 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 
-if has("gui_running")
-    set guioptions-=T
-endif
 
-"Show nice tabs
-set listchars=tab:>-,trail:~,extends:>,precedes:<
-set list
+" ---- General settings --- "
 
-set number
-set linebreak
-set nowrap  " No word wrap
-
-au BufRead, BufNewFile *.py set expandtab
-au BufRead, BufNewFile Makefile* set noexpandtab
-
-set anti            " Turn on anti-aliasing
+syntax enable
+set anti  " Turn on anti-aliasing
 set gfn=Source\ Code\ Pro\ Light:h16 " Set the font family and the font size
-
+set listchars=tab:>-,trail:~,extends:>,precedes:<  " Show tab chars
+set list
+set number  " Print with line numbers?
+set linebreak  " Breaks at special chars, not in the middle of words
+set nowrap  " No word wrap
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
 set backspace=indent,eol,start
-
-set ruler
-syntax on
-
+set ruler  " Show line and column number
 set showcmd
-
-set gdefault
-set nostartofline
-
-"--- Nerdtree options ---
-" Open if no files specified
-autocmd vimenter * if !argc() | NERDTree | endif
-" Close if Nerdtree is last window
-autocmd vimenter * if !argc() | NERDTree | endif
-
-" Solarize options:
-syntax enable
+set gdefault  " Search globaly by default
+set nostartofline  " Don't move back to column 0 if possible
+set textwidth=0  " Turn off auto line break
+set wrapmargin=0  " Turn off auto line break
+set colorcolumn=79  " Highlight 80th col
 set background=dark
+
 if has("gui_running")
+    set guioptions-=T
     colorscheme molokai
 else
     try
@@ -81,29 +66,11 @@ else
     endtry
 endif
 
-" Autoreload .vimrc if it changes:
-augroup myvimrchooks
-    au!
-    autocmd bufwritepost .vimrc source ~/.vimrc
-augroup END
 
-" Turn off auto line break
-set textwidth=0
-set wrapmargin=0
+" ---- Key bindings ---- "
 
-" Highlight 80th col
-set colorcolumn=79
-
-" Allow long lines in JS
-autocmd FileType javascript setl colorcolumn=0
-
-" Explore options
-let g:netrw_liststyle=3
-let g:netrw_winsize=15
-
-" --- Key bindings --- "
-nnoremap <space> <nop>
 " Spacebar for President
+nnoremap <space> <nop>
 let mapleader = "\<space>"
 
 " Buffer navigation
@@ -118,14 +85,30 @@ map <leader>d <Plug>DashSearch
 map <leader>e :Lexplore<CR>
 map <leader>n :NERDTreeToggle<CR>
 
-" Resize window to 80 cols
+" Resize window to ~ 80 cols
 map <F8> :vertical resize 83<CR>
 
 " spam jk to exit to Normal Mode
 imap jk <ESC>
 imap kj <ESC>
 
-" .md is a markdown file
+
+" ---- Autocommands ---- "
+
+" Allow long lines in JS
+autocmd FileType javascript setl colorcolumn=0
+
+" Expand tabs in Python
+au BufRead, BufNewFile *.py set expandtab
+au BufRead, BufNewFile Makefile* set noexpandtab
+
+" Autoreload .vimrc if it changes:
+augroup myvimrchooks
+    au!
+    autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
+
+" set .md extension is a markdown file
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " Error on trailing whitespace
@@ -136,11 +119,13 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Syntastic settings
+
+" ---- Plugin settings ---- "
+
+" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -150,4 +135,23 @@ let g:syntastic_enable_signs = 1
 " JShint
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['python', 'flake8']
+
+" Ctrl-P
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+" Use the nearest .git directory as the cwd
+let g:ctrlp_working_path_mode = 'r'
+
+" Explore
+let g:netrw_liststyle=3
+let g:netrw_winsize=15
+
+" Nerdtree
+" Open if no files specified
+autocmd vimenter * if !argc() | NERDTree | endif
+" Close if Nerdtree is last window
+autocmd vimenter * if !argc() | NERDTree | endif
 
