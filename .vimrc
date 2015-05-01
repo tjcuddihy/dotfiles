@@ -54,6 +54,8 @@ set textwidth=0  " Turn off auto line break
 set wrapmargin=0  " Turn off auto line break
 set colorcolumn=79  " Highlight 80th col
 set background=dark
+set noswapfile
+set nobackup
 
 if has("gui_running")
     set guioptions-=T
@@ -79,8 +81,11 @@ map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
 
 " Simplify window resizing
-nnoremap <silent> > :exe "vertical resize " . (winwidth(0) * 5/6)<CR>
-nnoremap <silent> < :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
+nnoremap <S-Up> <c-w>>
+nnoremap <S-Down> <c-w><
+" Big jumps
+nnoremap <S-Left> :exe "vertical resize " . (winwidth(0) * 5/6)<CR>
+nnoremap <S-Right> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
 
 " Simplify Dash search
 map <leader>d <Plug>DashSearch
