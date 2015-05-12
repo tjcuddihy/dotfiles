@@ -25,7 +25,9 @@ alias gba="git branch -va --color"  # All
 alias gc="git commit -m "  # Add a commit message
 alias gd="git diff "
 alias gdc="git diff --cached"  # Diff staged files
+alias gll="git log -p"
 alias glog="git log --graph --decorate --all"
+alias gllg='git log --color --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 alias gpom="git push origin master"
 alias gr="git checkout -- "  # "Revert" a specific file
 alias gs="git status -b"  # Add -s for short form
