@@ -33,10 +33,12 @@ filetype plugin indent on    " required
 " ---- General settings --- "
 
 syntax enable
-set anti  " Turn on anti-aliasing
-set gfn=Source\ Code\ Pro\ Light:h16 " Set the font family and the font size
+set noanti  " Turn on anti-aliasing
+"set gfn=Source\ Code\ Pro:h15 " Set the font family and the font size
+set gfn=Monaco:h14 " Set the font family and the font size
 set listchars=tab:>-,trail:~,extends:>,precedes:<  " Show tab chars
 set list
+set linespace=1
 set number  " Print with line numbers?
 set linebreak  " Breaks at special chars, not in the middle of words
 set nowrap  " No word wrap
@@ -81,6 +83,7 @@ map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
 
 " Simplify window resizing
+" Small changes
 nnoremap <S-Up> <c-w>>
 nnoremap <S-Down> <c-w><
 " Big jumps
