@@ -10,6 +10,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
+Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
 Plugin 'tomasr/molokai'  " Molokai colorscheme
 Plugin 'scrooloose/syntastic'  " Linter
 Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
@@ -31,14 +32,14 @@ filetype plugin indent on    " required
 
 
 " ---- General settings --- "
-
 syntax enable
-set noanti  " Turn on anti-aliasing
-"set gfn=Source\ Code\ Pro:h15 " Set the font family and the font size
+set t_Co=256
+set noanti  " Turn off anti-aliasing
+set gfn=Source\ Code\ Pro\ Light:h14 " Set the font family and the font size
 set gfn=Monaco:h14 " Set the font family and the font size
 set listchars=tab:>-,trail:~,extends:>,precedes:<  " Show tab chars
 set list
-set linespace=1
+set linespace=1  " Line spacing
 set number  " Print with line numbers?
 set linebreak  " Breaks at special chars, not in the middle of words
 set nowrap  " No word wrap
@@ -46,11 +47,13 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set laststatus=2
 set autoindent
 set backspace=indent,eol,start
 set ruler  " Show line and column number
 set showcmd
 set gdefault  " Search globaly by default
+set hidden  " Allow buffer switching without save
 set nostartofline  " Don't move back to column 0 if possible
 set textwidth=0  " Turn off auto line break
 set wrapmargin=0  " Turn off auto line break
@@ -62,9 +65,11 @@ set nobackup
 if has("gui_running")
     set guioptions-=T
     colorscheme molokai
+    "colorscheme PaperColor
 else
     try
         colorscheme molokai
+        "colorscheme PaperColor
     catch
         colorscheme torte
     endtry
