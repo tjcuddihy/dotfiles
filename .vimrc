@@ -88,6 +88,13 @@ map <leader>b :buffers<CR>:buffer<space>
 map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
 
+map <leader>d <Plug>DashSearch
+map <leader>e :Lexplore<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>w :w<CR>
+" Completion in insert mode
+imap <C-j> <C-p>
+
 " Simplify window resizing
 " Small changes
 nnoremap <S-Up> <c-w>>
@@ -96,12 +103,6 @@ nnoremap <S-Down> <c-w><
 nnoremap <S-Left> :exe "vertical resize " . (winwidth(0) * 5/6)<CR>
 nnoremap <S-Right> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
 
-" Simplify Dash search
-map <leader>d <Plug>DashSearch
-
-" Site maps
-map <leader>e :Lexplore<CR>
-map <leader>n :NERDTreeToggle<CR>
 
 " Resize window to ~ 80 cols
 map <F8> :vertical resize 83<CR>
