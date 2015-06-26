@@ -17,6 +17,7 @@ Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
 Plugin 'shutnik/jshint2.vim'  " JShint integration
 Plugin 'rizzatti/dash.vim'  " Dash integration
 Plugin 'raichoo/haskell-vim'  " Haskell syntax
+Plugin 'derekwyatt/vim-scala'  " Scala stuff
 
 call vundle#end()            " required
 filetype plugin indent on    " required
