@@ -92,6 +92,8 @@ map <leader>d <Plug>DashSearch
 map <leader>e :Lexplore<CR>
 map <leader>n :NERDTreeToggle<CR>
 map <leader>w :w<CR>
+map <leader>v :vsplit<CR>
+
 " Completion in insert mode
 imap <C-j> <C-p>
 
