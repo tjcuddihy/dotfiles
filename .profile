@@ -45,6 +45,8 @@ alias m="make "
 
 # Simplified virtual env activator
 activenv () { source "$HOME/virtualenvs/$@/bin/activate"; }
+alias sbva="sourve venv/bin/activate"
+
 
 # Silver Searcher aliases
 agl () { ag --color --after=4 "$@" | less -SRi; }
