@@ -34,6 +34,7 @@ alias glog="git log --graph --decorate --all"
 alias gpom="git push origin master"
 alias gr="git checkout -- "  # "Revert" a specific file
 alias gs="git status -b"  # Add -s for short form
+alias gst="git stash"
 alias gsl="git stash list"
 alias gsp="git stash pop"
 
@@ -45,7 +46,7 @@ alias m="make "
 
 # Simplified virtual env activator
 activenv () { source "$HOME/virtualenvs/$@/bin/activate"; }
-alias sbva="sourve venv/bin/activate"
+alias svba="source venv/bin/activate"
 
 
 # Silver Searcher aliases
