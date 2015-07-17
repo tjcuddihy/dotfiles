@@ -60,6 +60,7 @@ set textwidth=0  " Turn off auto line break
 set wrapmargin=0  " Turn off auto line break
 set colorcolumn=79  " Highlight 80th col
 set background=dark
+set autoread  " Auto reload changed files
 set noswapfile
 set nobackup
 
