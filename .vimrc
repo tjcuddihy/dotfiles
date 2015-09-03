@@ -7,7 +7,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'  " Vundle itself
 Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
 Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
@@ -18,6 +18,7 @@ Plugin 'shutnik/jshint2.vim'  " JShint integration
 Plugin 'rizzatti/dash.vim'  " Dash integration
 Plugin 'raichoo/haskell-vim'  " Haskell syntax
 Plugin 'derekwyatt/vim-scala'  " Scala stuff
+Plugin 'jtratner/vim-flavored-markdown'  " Github markdown
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -34,6 +35,7 @@ filetype plugin indent on    " required
 
 " ---- General settings --- "
 syntax enable
+
 set t_Co=256
 set noanti  " Turn off anti-aliasing
 set gfn=Source\ Code\ Pro\ Light:h14 " Set the font family and the font size
@@ -68,6 +70,7 @@ if has("gui_running")
     set guioptions-=T
     colorscheme molokai
     "colorscheme PaperColor
+    " colorscheme torte
 else
     try
         colorscheme molokai
@@ -130,8 +133,10 @@ augroup myvimrchooks
     autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
 
-" set .md extension is a markdown file
-autocmd BufNewFile,BufRead *.md set filetype=markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.mkd,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 " Error on trailing whitespace
 highlight ExtraWhitespace ctermbg=darkgreen guibg=#999999
@@ -171,9 +176,6 @@ let g:ctrlp_working_path_mode = 'r'
 let g:netrw_liststyle=3
 let g:netrw_winsize=15
 
-" Nerdtree
-" Open if no files specified
-autocmd vimenter * if !argc() | NERDTree | endif
 " Close if Nerdtree is last window
 autocmd vimenter * if !argc() | NERDTree | endif
 
