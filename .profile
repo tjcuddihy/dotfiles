@@ -3,12 +3,12 @@ export PATH="$HOME/code/bin:$PATH"
 
 # Apps
 export PATH="$HOME/Library/Haskell/bin:$PATH"
-export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 # Scala
 export SCALA_HOME="/usr/local/share/scala"
 export PATH="$SCALA_HOME/bin:$PATH"
+export PATH="/usr/local/activator-dist-1.3.5:$PATH"
 
 # Bash aliases
 alias ll="ls -al"
