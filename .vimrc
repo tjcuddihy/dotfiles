@@ -70,7 +70,7 @@ if has("gui_running")
     set guioptions-=T
     colorscheme molokai
     "colorscheme PaperColor
-    " colorscheme torte
+    "colorscheme torte
 else
     try
         colorscheme molokai
@@ -108,7 +108,6 @@ nnoremap <S-Down> <c-w><
 " Big jumps
 nnoremap <S-Left> :exe "vertical resize " . (winwidth(0) * 5/6)<CR>
 nnoremap <S-Right> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
-
 
 " Resize window to ~ 80 cols
 map <F8> :vertical resize 83<CR>
@@ -177,6 +176,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:netrw_liststyle=3
 let g:netrw_winsize=15
 
-" Close if Nerdtree is last window
-autocmd vimenter * if !argc() | NERDTree | endif
+" Nerdtree
+" Close if last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
