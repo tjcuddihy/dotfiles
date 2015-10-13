@@ -30,7 +30,7 @@ alias gc="git commit --message "  # Add a commit message
 alias gd="git diff "
 alias gdc="git diff --cached"  # Diff staged files
 alias gll="git log -p"  # Log with full diff patch
-alias gllg='git log --color --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
+alias gllg='git log --color --all --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 alias glog="git log --graph --decorate --all"
 alias gpom="git push origin master"
 alias gr="git checkout -- "  # Revert a specific file
