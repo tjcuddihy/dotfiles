@@ -14,6 +14,8 @@ set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
+set smtp_authenticators = 'gssapi:login'
+
 set move = no
 
 set sort = 'threads'
@@ -25,3 +27,4 @@ ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
 hdr_order Date From To Cc
 
+bind index G imap-fetch-mail
