@@ -1,5 +1,6 @@
 # Add my personal bins
 export PATH="$HOME/code/bin:$PATH"
+export PATH="$HOME/.npm/bin:$PATH"
 
 # Apps
 export PATH="$HOME/Library/Haskell/bin:$PATH"
@@ -46,15 +47,16 @@ alias v="mvim "
 # Make aliases
 alias m="make "
 
+# ctags build alias
+alias btags="ctags -R --exclude=@$HOME/.ctagsignore --links=no ."
+
 # Simplified virtual env activator
 activenv () { source "$HOME/virtualenvs/$@/bin/activate"; }
 alias svba="source venv/bin/activate"
 
 
 # Silver Searcher aliases
-agl () { ag --color --after=4 "$@" | less -SRi; }
-ags () { ag --color --after=4 --smart-case "$@" | less -SRi; }
-agq () { ag --color --before=2 --after=4 --literal "$@" | less -SRi; }
+agq () { ag --color --context --smart-case --literal "$@" | less -SRi; }
 agm () { ag --color --after=20 --literal "<<<<<<<" | less -SRi; } #Forgotten merge conflicts
 
 # Create a folder and then move into it
