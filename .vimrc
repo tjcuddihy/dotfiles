@@ -7,7 +7,8 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'  " Vundle itself
 Plugin 'tpope/vim-fugitive'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim' " Silver Searcher
 Plugin 'scrooloose/nerdtree'
 Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
 Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
@@ -92,11 +93,19 @@ map <leader>b :buffers<CR>:buffer<space>
 map <leader>l :bnext<CR>
 map <leader>h :bprev<CR>
 
+" Open ctrlP in buffer mode, then search names only (<C-D>)
+nnoremap <C-b> :CtrlPBuffer<CR><C-d><CR>
+
 map <leader>d <Plug>DashSearch
 map <leader>e :Lexplore<CR>
 map <leader>n :NERDTreeToggle<CR>
+map <leader>pu :pu<CR>
 map <leader>w :w<CR>
-map <leader>v :vsplit<CR>
+map <leader>v :vsplit<CR><C-^>
+
+" Replace word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>' :s/"/'<CR>
 
 " Completion in insert mode
 imap <C-j> <C-p>
@@ -116,6 +125,8 @@ map <F8> :vertical resize 83<CR>
 imap jk <ESC>
 imap kj <ESC>
 
+" Edit .vimrc in a new vsplit
+nmap ,v :vsp $MYVIMRC<CR>
 
 " ---- Autocommands ---- "
 
