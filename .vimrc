@@ -17,7 +17,7 @@ Plugin 'scrooloose/syntastic'  " Linter
 Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
 Plugin 'shutnik/jshint2.vim'  " JShint integration
 Plugin 'rizzatti/dash.vim'  " Dash integration
-Plugin 'raichoo/haskell-vim'  " Haskell syntax
+Plugin 'neovimhaskell/haskell-vim'  " Haskell syntax
 Plugin 'derekwyatt/vim-scala'  " Scala stuff
 Plugin 'jtratner/vim-flavored-markdown'  " Github markdown
 
@@ -69,6 +69,7 @@ set nobackup
 
 if has("gui_running")
     set guioptions-=T
+    autocmd GUIEnter * set vb t_vb=  " Disable goddamn bell
     colorscheme molokai
     "colorscheme PaperColor
     "colorscheme torte
@@ -132,6 +133,7 @@ nmap ,v :vsp $MYVIMRC<CR>
 
 " Allow long lines in JS
 autocmd FileType javascript setl colorcolumn=0
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " Expand tabs in Python
 au BufRead, BufNewFile *.py set expandtab
@@ -147,6 +149,7 @@ augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.mkd,*.markdown setlocal filetype=ghmarkdown
 augroup END
+
 
 " Error on trailing whitespace
 highlight ExtraWhitespace ctermbg=darkgreen guibg=#999999
