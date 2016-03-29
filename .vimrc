@@ -2,37 +2,38 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("vundle")
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'  " Vundle itself
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim' " Silver Searcher
-Plugin 'scrooloose/nerdtree'
-Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
-Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
-Plugin 'tomasr/molokai'  " Molokai colorscheme
-Plugin 'scrooloose/syntastic'  " Linter
-Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
-Plugin 'shutnik/jshint2.vim'  " JShint integration
-Plugin 'rizzatti/dash.vim'  " Dash integration
-Plugin 'neovimhaskell/haskell-vim'  " Haskell syntax
-Plugin 'derekwyatt/vim-scala'  " Scala stuff
-Plugin 'jtratner/vim-flavored-markdown'  " Github markdown
+    Plugin 'gmarik/Vundle.vim'  " Vundle itself
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'rking/ag.vim' " Silver Searcher
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
+    Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
+    Plugin 'tomasr/molokai'  " Molokai colorscheme
+    Plugin 'scrooloose/syntastic'  " Linter
+    Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
+    Plugin 'shutnik/jshint2.vim'  " JShint integration
+    Plugin 'rizzatti/dash.vim'  " Dash integration
+    Plugin 'neovimhaskell/haskell-vim'  " Haskell syntax
+    Plugin 'derekwyatt/vim-scala'  " Scala stuff
+    Plugin 'jtratner/vim-flavored-markdown'  " Github markdown
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    "
+    " see :h vundle for more details or wiki for FAQ
+endif
 
 " ---- General settings --- "
 syntax enable
@@ -163,18 +164,20 @@ autocmd BufWinLeave * call clearmatches()
 " ---- Plugin settings ---- "
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
+if has("SyntasticStatusLineFlag")
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 0
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_enable_signs = 1
 
-" JShint
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_python_checkers = ['python', 'flake8']
+    " JShint
+    let g:syntastic_javascript_checkers = ['jshint']
+    let g:syntastic_python_checkers = ['python', 'flake8']
+endif
 
 " Ctrl-P
 " Setup some default ignores
