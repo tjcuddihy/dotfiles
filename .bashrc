@@ -38,3 +38,6 @@ agm () { ag --color --after=20 --literal "<<<<<<<" | less -SRi; } #Forgotten mer
 # Create a folder and then move into it
 mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
+
+export NVM_DIR="/Users/mitch.leblanc/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

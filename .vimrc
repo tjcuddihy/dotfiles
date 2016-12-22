@@ -2,49 +2,49 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-if has("vundle")
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-    Plugin 'gmarik/Vundle.vim'  " Vundle itself
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'rking/ag.vim' " Silver Searcher
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
-    Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
-    Plugin 'tomasr/molokai'  " Molokai colorscheme
-    Plugin 'scrooloose/syntastic'  " Linter
-    Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
-    Plugin 'shutnik/jshint2.vim'  " JShint integration
-    Plugin 'rizzatti/dash.vim'  " Dash integration
-    Plugin 'neovimhaskell/haskell-vim'  " Haskell syntax
-    Plugin 'derekwyatt/vim-scala'  " Scala stuff
-    Plugin 'jtratner/vim-flavored-markdown'  " Github markdown
+Plugin 'gmarik/Vundle.vim'  " Vundle itself
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim' " Silver Searcher
+Plugin 'scrooloose/nerdtree'
+Plugin 'editorconfig/editorconfig-vim'  " editorconfig for vim
+Plugin 'scrooloose/syntastic'  " Linter
+Plugin 'jelera/vim-javascript-syntax'  " better javascript syntax
+Plugin 'shutnik/jshint2.vim'  " JShint integration
+Plugin 'rizzatti/dash.vim'  " Dash integration
+Plugin 'raichoo/haskell-vim'  " Haskell syntax
+Plugin 'derekwyatt/vim-scala'  " Scala stuff
+Plugin 'jtratner/vim-flavored-markdown'  " Github markdown
+Plugin 'AndrewRadev/linediff.vim'  " Diff two blocks of text
 
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    "
-    " see :h vundle for more details or wiki for FAQ
-endif
+" Colorschemes
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'dracula/vim'
+Plugin 'romainl/Apprentice'
+Plugin 'whatyouhide/vim-gotham'
+Plugin 'NLKNguyen/papercolor-theme'  " Nice light theme
+Plugin 'tomasr/molokai'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'Junza/Spink'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
 
 " ---- General settings --- "
-syntax enable
-
-set t_Co=256
-set noanti  " Turn off anti-aliasing
-set gfn=Source\ Code\ Pro\ Light:h14 " Set the font family and the font size
-set gfn=Monaco:h14 " Set the font family and the font size
 set listchars=tab:>-,trail:~,extends:>,precedes:<  " Show tab chars
 set list
-set linespace=1  " Line spacing
 set number  " Print with line numbers?
 set linebreak  " Breaks at special chars, not in the middle of words
 set nowrap  " No word wrap
@@ -62,29 +62,43 @@ set hidden  " Allow buffer switching without save
 set nostartofline  " Don't move back to column 0 if possible
 set textwidth=0  " Turn off auto line break
 set wrapmargin=0  " Turn off auto line break
-set colorcolumn=79  " Highlight 80th col
-set background=dark
 set autoread  " Auto reload changed files
 set noswapfile
 set nobackup
+set ignorecase  " Ignore case in search by default
+set smartcase  " Use case sentive when contains caps
 
+syntax enable
+set t_Co=256
+if !has('nvim')
+    set noanti  " Turn off anti-aliasing
+endif
+
+set linespace=3  " Line spacing
+set guifont=Andale\ Mono:h12 " Set the font family and the font size
+set background=dark
 if has("gui_running")
+    set lines=999 columns=999  " Maximize window
     set guioptions-=T
-    autocmd GUIEnter * set vb t_vb=  " Disable goddamn bell
-    colorscheme molokai
-    "colorscheme PaperColor
-    "colorscheme torte
+    colorscheme Dracula
 else
     try
-        colorscheme molokai
-        "colorscheme PaperColor
+        colorscheme Dracula
     catch
         colorscheme torte
     endtry
 endif
 
+set tags=./tags,tags;$HOME  " Should find tags files now?
+
+set statusline =%1*\ %n\ %*            "buffer number
+set statusline +=\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+hi User1 guifg=#de3b74  guibg=#1c1d1f gui=bold
 
 " ---- Key bindings ---- "
+" Ditch ex mode
+noremap Q <nop>
 
 " Spacebar for President
 nnoremap <space> <nop>
@@ -98,12 +112,15 @@ map <leader>h :bprev<CR>
 " Open ctrlP in buffer mode, then search names only (<C-D>)
 nnoremap <C-b> :CtrlPBuffer<CR><C-d><CR>
 
+" clear search history
+nnoremap <CR> :noh<CR><CR>
+
 map <leader>d <Plug>DashSearch
-map <leader>e :Lexplore<CR>
-map <leader>n :NERDTreeToggle<CR>
-map <leader>pu :pu<CR>
 map <leader>w :w<CR>
+map <leader>e :Lexplore<CR>
 map <leader>v :vsplit<CR><C-^>
+map <leader>p "*p<CR>
+map <leader>y "*y<CR>
 
 " Replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
@@ -123,7 +140,7 @@ nnoremap <S-Right> :exe "vertical resize " . (winwidth(0) * 6/5)<CR>
 " Resize window to ~ 80 cols
 map <F8> :vertical resize 83<CR>
 
-" spam jk to exit to Normal Mode
+" Spam jk to exit to Normal Mode
 imap jk <ESC>
 imap kj <ESC>
 
@@ -160,24 +177,19 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-
 " ---- Plugin settings ---- "
 
 " Syntastic
-if has("SyntasticStatusLineFlag")
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 0
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_enable_signs = 1
-
-    " JShint
-    let g:syntastic_javascript_checkers = ['jshint']
-    let g:syntastic_python_checkers = ['python', 'flake8']
-endif
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jshint']
 
 " Ctrl-P
 " Setup some default ignores
