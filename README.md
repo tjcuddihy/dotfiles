@@ -1,4 +1,4 @@
-Supermitch Dotfiles
+Supermitch .dotfiles
 ===================
 
 🛠 Tool Mastery Is Next To Godliness.
