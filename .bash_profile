@@ -13,9 +13,6 @@ export PATH="$HOME/.npm/bin:$PATH"
 # Add my bins
 export PATH="$HOME/code/bin:$PATH"
 
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 # Postgres
 export PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 
@@ -28,9 +25,3 @@ fi
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
-
-
-# Setting PATH for Python 3.5
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
