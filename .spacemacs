@@ -349,6 +349,10 @@ you should place your code here."
   ;; Fix for weird colour space making separator colour mismatch rest of powerline
   ;; https://github.com/milkypostman/powerline/issues/54
   (setq powerline-image-apple-rgb t)
+
+
+  ;; Key remap
+  (which-key-define-key-recursively global-map [escape] 'keyboard-quit)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
