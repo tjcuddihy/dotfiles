@@ -1,5 +1,7 @@
-Supermitch .dotfiles
+Goodest .dotfiles
 ===================
+
+Modified from [Supermitch](https://github.com/supermitch/dotfiles)
 
 🛠 Tool Mastery Is Next To Godliness.
 
@@ -14,7 +16,7 @@ The script will create backups of existing files, and skip any existing symlinks
 
 * Fix .zshrc, .bashrc, .profile, .alias nightmare
 
-✨ Fresher 
+✨ Fresher
 -----------
 
 Run `python fresher.py` to automatically do a ton of things you've done 100 times.
