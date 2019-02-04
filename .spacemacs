@@ -343,6 +343,12 @@ you should place your code here."
   (setq truncate-lines nil)
   (setq projectile-mode-line "Projectile")
   (setq exec-path-from-shell-initialize t)
+
+  ;; Powerline GUI params
+  (setq powerline-default-separator 'wave)
+  ;; Fix for weird colour space making separator colour mismatch rest of powerline
+  ;; https://github.com/milkypostman/powerline/issues/54
+  (setq powerline-image-apple-rgb t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
