@@ -39,7 +39,7 @@ def bew_cake():
 def misc():
     """ Random odds & ends """
 
-    sources = ['~/.bashrc', '~/.bash_profile']
+    sources = ['~/.zshrc']
     for source in sources:
         source = os.path.expanduser(source)
         print(source)
