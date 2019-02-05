@@ -1,6 +1,30 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" ---- Vundle --- "
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-surround'
+Plugin 'sjl/gundo.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'osyo-manga/vim-over'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+" ---- Vundle END --- "
+
 " ---- General settings --- "
 set listchars=tab:>-,trail:~,extends:>,precedes:<  " Show tab chars
 set list
@@ -33,12 +57,8 @@ set noanti  " Turn off anti-aliasing
 set linespace=3  " Line spacing
 set guifont=Andale\ Mono:h12 " Set the font family and the font size
 set background=dark
-if has("gui_running")
-    set lines=999 columns=999  " Maximize window
-    set guioptions-=T
-else
-    colorscheme torte
-endif
+colorscheme solarized
+let g:airline_theme='solarized'
 
 set statusline =%1*\ %n\ %*            "buffer number
 set statusline +=\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
