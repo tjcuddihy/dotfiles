@@ -57,6 +57,7 @@ values."
      version-control
      (elfeed :variables
              rmh-elfeed-org-files(list "~/.emacs.d/private/elfeed1.org"))
+     terraform
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -67,6 +68,7 @@ values."
                                       transpose-frame
                                       yasnippet-snippets
                                       elfeed-org
+                                      terraform-mode
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -139,7 +141,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(solarized-dark
+                         solarized-light
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -325,13 +329,42 @@ you should place your code here."
 
   ;; Org-mode
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "WAIT(w!)" "|" "DONE(d!)" "CANCELLED(c!)")))
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
+
+  ;; Stop hl-todo mode stealing in ORG mode
+  (add-hook 'org-mode-hook (lambda () (hl-todo-mode -1) nil))
+  ;; Colours from Solarized definitions
+  ;; https://ethanschoonover.com/solarized/
+  (setq org-todo-keyword-faces
+        '(("TODO" . "#268bd2") ; blue
+          ("NEXT" . "#d33682") ; magenta
+          ("WAIT" . "#93a1a1") ; brcyan
+          ))
   (setq org-log-done 'time)
-  ;; (setq org-startup-folded 't)
-  (setq org-agenda-files '("~/workspace/notes"))
+  (setq org-indent-mode t)
+  (setq org-startup-indented t)
+  (setq org-startup-folded 't)
   (add-hook 'org-mode-hook
             '(lambda ()
                (visual-line-mode 1)))
+
+  (setq org-agenda-files '("~/Dropbox (Infoready)/gtd/gtd.org"
+                           "~/Dropbox (Infoready)/gtd/someday.org"
+                           "~/Dropbox (Infoready)/gtd/tickler.org"))
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                                 (file+headline "~/Dropbox (Infoready)/gtd/inbox.org" "Tasks")
+                                 "* TODO %i%? %^G")
+                                ("T" "Tickler" entry
+                                 (file+headline "~/Dropbox (Infoready)/gtd/tickler.org" "Tickler")
+                                 "* %i%? \n %^t %^G")))
+  (setq org-refile-targets '(("~/Dropbox (Infoready)/gtd/gtd.org" :maxlevel . 3)
+                             ("~/Dropbox (Infoready)/gtd/someday.org" :level . 1)
+                             ("~/Dropbox (Infoready)/gtd/tickler.org" :maxlevel . 2)))
+
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+
+
 
   ;; Date time display
   (setq display-time-24hr-format t)
@@ -341,6 +374,8 @@ you should place your code here."
   (display-time-mode 1)
 
   (setq flycheck-python-flake8-executable "flake8")
+  (setq python :variables python-test-runner 'pytest)
+
   (setq truncate-lines nil)
   (setq projectile-mode-line "Projectile")
   (setq exec-path-from-shell-initialize t)
@@ -363,13 +398,17 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox (Infoready)/gtd/inbox.org" "~/Dropbox (Infoready)/gtd/gtd.org" "~/Dropbox (Infoready)/gtd/someday.org" "~/Dropbox (Infoready)/gtd/tickler.org")))
  '(org-outline-path-complete-in-steps nil)
+ '(org-refile-allow-creating-parent-nodes (quote confirm))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 6))))
  '(org-refile-use-outline-path t)
  '(org-startup-folded t)
  '(package-selected-packages
    (quote
-    (vimrc-mode dactyl-mode elfeed-web elfeed-org elfeed-goodies ace-jump-mode noflet elfeed sql-indent web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode csv-mode company-jedi yasnippet-snippets transpose-frame ranger xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub with-editor diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (lv transient terraform-mode hcl-mode vimrc-mode dactyl-mode elfeed-web elfeed-org elfeed-goodies ace-jump-mode noflet elfeed sql-indent web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode csv-mode company-jedi yasnippet-snippets transpose-frame ranger xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub with-editor diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(python-shell-interpreter "python3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

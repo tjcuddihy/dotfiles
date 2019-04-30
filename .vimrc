@@ -16,6 +16,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'osyo-manga/vim-over'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tmhedberg/SimpylFold'
 
 
 " All of your Plugins must be added before the following line
