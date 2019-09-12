@@ -348,18 +348,22 @@ you should place your code here."
             '(lambda ()
                (visual-line-mode 1)))
 
-  (setq org-agenda-files '("~/Dropbox (Infoready)/gtd/gtd.org"
-                           "~/Dropbox (Infoready)/gtd/someday.org"
-                           "~/Dropbox (Infoready)/gtd/tickler.org"))
-  (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                 (file+headline "~/Dropbox (Infoready)/gtd/inbox.org" "Tasks")
+  (setq org-agenda-files '("~/Dropbox/gtd/gtd.org"
+                           "~/Dropbox/gtd/someday.org"
+                           "~/Dropbox/gtd/tickler.org"))
+  (setq org-capture-templates '(("t" "tasks")
+                                ("tt" "Todo [inbox]" entry
+                                 (file+headline "~/Dropbox/gtd/inbox.org" "Tasks")
                                  "* TODO %i%? %^G")
+                                ("tc" "Todo - with context" entry
+                                 (file+headline "~/Dropbox/gtd/inbox.org" "Tasks")
+                                 "* TODO %i%? %^G\n %a")
                                 ("T" "Tickler" entry
-                                 (file+headline "~/Dropbox (Infoready)/gtd/tickler.org" "Tickler")
+                                 (file+headline "~/Dropbox/gtd/tickler.org" "Tickler")
                                  "* %i%? \n %^t %^G")))
-  (setq org-refile-targets '(("~/Dropbox (Infoready)/gtd/gtd.org" :maxlevel . 3)
-                             ("~/Dropbox (Infoready)/gtd/someday.org" :level . 1)
-                             ("~/Dropbox (Infoready)/gtd/tickler.org" :maxlevel . 2)))
+  (setq org-refile-targets '(("~/Dropbox/gtd/gtd.org" :maxlevel . 3)
+                             ("~/Dropbox/gtd/someday.org" :level . 1)
+                             ("~/Dropbox/gtd/tickler.org" :maxlevel . 2)))
 
   (setq org-refile-use-outline-path 'file)
   (setq org-outline-path-complete-in-steps nil)
@@ -409,6 +413,7 @@ you should place your code here."
  '(package-selected-packages
    (quote
     (lv transient terraform-mode hcl-mode vimrc-mode dactyl-mode elfeed-web elfeed-org elfeed-goodies ace-jump-mode noflet elfeed sql-indent web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode csv-mode company-jedi yasnippet-snippets transpose-frame ranger xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic unfill smeargle orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow htmlize helm-gitignore helm-company helm-c-yasnippet gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub with-editor diff-hl company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete spinner evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu undo-tree adaptive-wrap ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil goto-chg eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+ '(paradox-github-token t)
  '(python-shell-interpreter "python3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
