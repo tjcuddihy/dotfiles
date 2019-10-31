@@ -64,7 +64,7 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-                                      org-projectile
+                                      ;; org-projectile
                                       transpose-frame
                                       yasnippet-snippets
                                       elfeed-org
@@ -404,7 +404,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/Dropbox (Infoready)/gtd/inbox.org" "~/Dropbox (Infoready)/gtd/gtd.org" "~/Dropbox (Infoready)/gtd/someday.org" "~/Dropbox (Infoready)/gtd/tickler.org")))
+    ("~/Dropbox/gtd/inbox.org" "~/Dropbox/gtd/gtd.org" "~/Dropbox/gtd/someday.org" "~/Dropbox/gtd/tickler.org")))
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-allow-creating-parent-nodes (quote confirm))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 6))))
