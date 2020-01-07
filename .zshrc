@@ -32,6 +32,8 @@ plugins=(
   git-flow-avh
   osx
   z
+  docker
+  docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
