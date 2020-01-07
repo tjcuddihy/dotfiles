@@ -349,7 +349,7 @@ you should place your code here."
                (visual-line-mode 1)))
 
   (setq org-agenda-files '("~/Dropbox/gtd/gtd.org"
-                           "~/Dropbox/gtd/someday.org"
+                           "~/Dropbox/gtd/inbox.org"
                            "~/Dropbox/gtd/tickler.org"))
   (setq org-capture-templates '(("t" "tasks")
                                 ("tt" "Todo [inbox]" entry
