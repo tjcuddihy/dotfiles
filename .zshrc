@@ -58,7 +58,7 @@ curl cht.sh/$1
 # Which commands do I use the most?
 alias histstats="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v './' | column -c3 -s ' ' -t | sort -nr | nl |  head -n10"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable virtualenv vcs newline)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time history time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv newline)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time history time newline)
 
 source ~/.git-flow-completion.zsh
