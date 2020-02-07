@@ -67,8 +67,8 @@ values."
                                       ;; org-projectile
                                       transpose-frame
                                       yasnippet-snippets
-                                      elfeed-org
-                                      terraform-mode
+                                      ;; elfeed-org
+                                      ;; terraform-mode
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -105,7 +105,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update 1;;nil
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
