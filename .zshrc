@@ -62,3 +62,8 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time history time newline)
 
 source ~/.git-flow-completion.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
