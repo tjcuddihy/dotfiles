@@ -26,6 +26,11 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
+;; (custom-set-faces!
+;;   '(hl-fill-column-face :background "red"))
+  ;; '(hl-fill-column-face :background "#073642" :foreground "#839496"))
+  ;; '(hl-fill-column-face :background "grey"))
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Dropbox/gtd/")
@@ -73,6 +78,7 @@
   (setq org-agenda-files '("~/Dropbox/gtd/gtd.org"
                            "~/Dropbox/gtd/inbox.org"
                            "~/Dropbox/gtd/tickler.org"))
+
   (setq org-capture-templates '(("t" "tasks")
                                 ("tt" "Todo [inbox]" entry
                                  (file+headline "~/Dropbox/gtd/inbox.org" "Tasks")
