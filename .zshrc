@@ -4,20 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/thomascuddihy/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="awesome-patched"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
@@ -28,18 +14,17 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-#  aws
+  aws
   git
-  git-flow-avh
   osx
   z
-  docker
-  docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -50,15 +35,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias python=python3
-alias h="fc -li 1"
-function cheat() {
-curl cht.sh/$1
-}
-
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context virtualenv newline)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time history time newline)
-
-source ~/.git-flow-completion.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
