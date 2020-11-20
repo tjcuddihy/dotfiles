@@ -1,0 +1,4 @@
+[include]
+        path = ~/git-personal.conf
+[includeIf "gitdir:~/workspace/projects/"]
+        path = ~/git-work.conf
